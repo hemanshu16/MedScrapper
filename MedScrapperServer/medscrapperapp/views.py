@@ -134,7 +134,8 @@ def searchsuggestionsbycontent(request):
 undef = 0;
 terminate = 5
 def medicine_from_1mg(request):
-    return HttpResponse(json.dumps(scrap_1mg(json.loads(request.body))))
+    print(json.loads(request.body))
+    return HttpResponse(json.dumps(scrap_1mg(json.loads(request.body) )))
 
 def medicine_from_pharmeasy(request):
     print("Requesting for pharmeasy medicine...")
@@ -142,19 +143,9 @@ def medicine_from_pharmeasy(request):
 
 def medicine_from_netmeds(request):
     print("Requesting medicine from netmeds")
-
     return HttpResponse(scrap_netmeds(json.loads(request.body)), content_type='application/json')
 
 def findbymedicinename(request) :
     data = json.loads(request.body)
-    get_medicine(data['name'], data['website'])
-    return HttpResponse("Done")
-
-def contentbymedicinename(request) :
-    data = json.loads(request.body)
-    return HttpResponse(json.dumps(findContentByMedicineName(data['name'],data['website'])))
-
-
-def medicinebycontent(request) :
-    data = json.loads(request.body)
-    return HttpResponse(json.dumps(get_medicinebycontent(data['name'],data['website'])))
+    return HttpResponse(json.dumps(get_medicine(data['name'], data['website'])))
+    
