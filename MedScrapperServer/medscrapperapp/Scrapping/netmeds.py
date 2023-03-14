@@ -5,7 +5,8 @@ from medscrapperapp.netmeds_models import MedicineNetMeds
 import json
 import re
 
-def scrap_netmeds(medicine_name) :
+def scrap_netmeds(data) :
+    medicine_name = data['name']
     terminate  = 5
     available_searched_medicine_model = []
     available_searched_medicine_netmeds = []

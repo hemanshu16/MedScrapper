@@ -2,9 +2,11 @@ from django.forms.models import model_to_dict
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 from medscrapperapp.onemg_models import Medicine1mg
-
-undef = 0
-def scrap_1mg(medicine_name) :
+from medscrapperapp.getmedicinebycontent import get_medicinebycontent
+# undef = 0
+def scrap_1mg(data) :
+    medicine_name = data['name']
+    print(data)
     terminate = 1
     medicine_details = []
     medicine_details_for_save = []
@@ -268,6 +270,8 @@ def scrap_1mg(medicine_name) :
         print(inst.args)     # arguments stored in .args
         print(inst) 
         try :
+            if data['selected'] == True and data['website'] != "1mg" :
+                return get_medicinebycontent(data['content'])
             medicine = Medicine1mg.objects.filter(name = medicine_name)
             print(len(medicine))
             saltsynonyms = ""

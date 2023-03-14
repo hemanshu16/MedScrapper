@@ -1,11 +1,13 @@
 from django.forms.models import model_to_dict
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
+from MedScrapper.MedScrapperServer.medscrapperapp import getmedicinebycontent
 from medscrapperapp.pharmeasy_models import MedicinePharmEasy
 import json
 import re
 
-def scrap_pharmeasy(medicine_name) :
+def scrap_pharmeasy(data) :
+    medicine_name = data['name']
     available_searched_medicine_pharmeasy = []
     available_searched_medicine_model = []
     terminate = 5
@@ -101,6 +103,8 @@ def scrap_pharmeasy(medicine_name) :
         print(inst.args)     # arguments stored in .args
         print(inst)  
         try :
+            if data['selected'] == True and data['website'] != "pharmeasy" :
+                return getmedicinebycontent(data['content'])
             print(medicine_name)
             saltsynonyms = MedicinePharmEasy.objects.get(name = medicine_name).content 
             print(saltsynonyms)

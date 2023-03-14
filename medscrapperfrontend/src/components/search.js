@@ -57,6 +57,7 @@ function Search(props) {
 
     const selectedfromsuggestion = (e) =>{
         setCompany(e.company)
+        setInput(e.name)
         setSelected(true);
         console.log("selected from suggestion")
     }
