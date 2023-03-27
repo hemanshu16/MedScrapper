@@ -37,7 +37,7 @@ export default function Home() {
   }
 
   // console.log("object")
-  let medicine_list_1mg, medicine_list_nm, medicine_list_pe
+  let medicine_list_1mg = [], medicine_list_nm = [], medicine_list_pe = []
   try {
     if (medicines1mg != null) {
       if (medicines1mg.length > 0) {
@@ -116,7 +116,7 @@ export default function Home() {
         <div className='row'>
 
           {loadingMedicine && <Disclaimer />}
-          {!loadingMedicine && medicine_list_pe == undefined&&
+          {!loadingMedicine && medicine_list_pe.length == 0 && medicine_list_nm.length == 0 && medicine_list_1mg.length == 0 &&
             <div>
               <div className="jumbotron mt-4" style={{ backgroundColor: "#ccffe5" }}>
                 <h1 style={{ fontFamily: "serif" }}>Welcome to our Medicine WebScapping Store</h1>

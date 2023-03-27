@@ -59,6 +59,7 @@ function Search(props) {
         setCompany(e.company)
         setInput(e.name)
         setSelected(true);
+        // setInput(input)
         console.log("selected from suggestion")
     }
 
@@ -74,29 +75,49 @@ function Search(props) {
         if (item.name.length > 1) {
             props.setLoadingMedicine(true)
             let str = item.name;
+            props.setMedicines1mg([])
+            props.setMedicinespe([])
+            props.setMedicinesnm([])
 
         
 
             MedicineInfo(item.name, '1mg', selected, searchby).then((str) => {
-                return JSON.parse(str)
+                return (str)
             }).then(data => {
+                if(str == "error occurred in scrapping")
+                {
+                    props.setMedicines1mg([])
+                    return
+                }
                 props.setMedicines1mg(data)
+                props.setLoadingMedicine(false)
                 console.log("tata 1mg")
                 console.log(data)
             })
 
             MedicineInfo(item.name, 'netmeds', selected, searchby).then((str) => {
-                return JSON.parse(str)
+                return (str)
             }).then(data => {
+                if(str == "error occurred in scrapping")
+                {
+                    props.setMedicinesnm([])
+                    return
+                }
                 props.setMedicinesnm(data)
+                props.setLoadingMedicine(false)
                 console.log("netmeds")
                 console.log(data)
 
             })
 
             MedicineInfo(item.name, 'pharmeasy',selected, searchby).then((str) => {
-                return JSON.parse(str)
+                return (str)
             }).then(data => {
+                if(str == "error occurred in scrapping")
+                {
+                    props.setMedicinespe([])
+                    return
+                }
                 props.setMedicinespe(data)
                 props.setLoadingMedicine(false)
                 console.log("pharmeasy  ")

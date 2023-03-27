@@ -52,8 +52,11 @@ export const MedicineInfo = async (seachquery, site, selected, searchby) =>{
    });
    
    let data = await response.text();
-   console.log(data)
-   return data;
+   if(response.status == 200)
+    return JSON.parse(data);
+  
+  
+  return "error occurred in scrapping";
    
 }
 

@@ -12,7 +12,7 @@ def scrap_pharmeasy(data) :
     medicine_name = data["name"]
     available_searched_medicine_pharmeasy = []
     available_searched_medicine_model = []
-    terminate = 5
+    terminate = 5   
     try :
         # print(undef)
         with sync_playwright () as p: 
