@@ -55,7 +55,7 @@ def scrap_1mg(data) :
                     details_link_drugs.append("https://www.1mg.com" + link['href'])
             itr = 0
             # terminate = len(details_link_drugs) + len(details_link_otc)
-            terminate = 5
+            terminate = 10
             for link in details_link_drugs :
                 itr = itr +1
                 medicine  = Medicine1mg()
