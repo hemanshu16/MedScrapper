@@ -1,5 +1,9 @@
 # MedScrapper
  A project on Medicine Information Scrapping
+ 
+ - MedScrapper is a Website that helps users to find alternative medicines of a particular medicine. It scrapes medicine information from onemg, netmeds, and pharmeasy websites,  and gives relevant information.
+ 
+ - Project Demo Link :- https://youtu.be/5-yiMt9RwyM
 
 # Project Setup
 - Required to have python and pip installed on computer
